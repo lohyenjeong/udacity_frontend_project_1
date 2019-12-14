@@ -1,7 +1,150 @@
 html {
-    background: url(../resources/background_mountain.jpeg) no-repeat center center fixed;
+    background: url(../resources/background_forest.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: Roboto, serif;
+}
+
+ul{
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+body{
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.light_text{
+    color: white;
+}
+
+#container{
+    display:grid;
+    min-width: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
+    grid-template-areas:
+            "hd hd hd"
+            "tt tt tt"
+            ". main ."
+            "ft ft ft";
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 5fr 12fr 1fr;
+}
+
+#container > .navigation_box{
+    grid-area: hd;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.navigation_text{
+    color: grey;
+    padding: 0 20px 0 20px;
+}
+
+.text_button{
+    padding: 0 20px 0 20px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    font-size: medium;
+    color: grey;
+}
+
+.text_button:hover{
+    color: dodgerblue;
+}
+
+.text_button:focus{
+    outline: 0;
+}
+
+.text_button:active{
+    color: white;
+}
+
+#container > .title_box{
+    grid-area: tt;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrollable{
+    overflow-y: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+
+.title{
+    font-size: xx-large;
+    font-family: Droid Sans Mono, serif;
+    font-weight: bolder;
+}
+
+#container > .content_box{
+    grid-area: main;
+    overflow-y: scroll;
+    text-justify: distribute-all-lines;
+}
+
+#container > .footer_box{
+    background-color: black;
+    grid-area: ft;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    margin: 0px;
+}
+
+
+.blog_posts {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: repeat(var(--total), 300px);
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+}
+
+
+.blog_post {
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.btn {
+    background-color: black; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btn:hover {
+    color: dodgerblue;
 }

@@ -2,9 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Yen Jeong Blog Site</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://kit.fontawesome.com/f105b6d922.js" crossorigin="anonymous"></script>
+
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
 </head>
 <body>
+<div id="container">
+    <div class="navigation_box">
+        <button class="text_button">Home</button>
+        <div class="navigation_text">.</div>
+        <button class="text_button">Posts</button>
+        <div class="navigation_text">.</div>
+        <button class="text_button">About</button>
+        <div class="navigation_text">.</div>
+        <button class="text_button">Contact Me</button>
+    </div>
+    <div class="title_box">
+        <div class="title light_text">Potatoes or Rice</div>
+        <div class="slogan light_text">What to do with my life?</div>
+    </div>
+    <div class="content_box">
+        <div class="blog_posts" id="blog_posts_id">
+
+        </div>
+    </div>
+    <div class="footer_box light_text">
+        <button class="btn"><i class="fab fa-twitter"></i></button>
+        <button class="btn"><i class="fab fa-linkedin"></i></button>
+        <button class="btn"><i class="fab fa-facebook"></i></button>
+        <div>© Copyright 2019</div>
+    </div>
+</div>
+
+<script>
+    const data_path = "data/blog_data.json";
+    const request = new XMLHttpRequest();
+    request.open('GET', data_path);
+    request.responseType = 'json';
+    request.send();
+
+    request.onload = function() {
+        const blog_data = request.response;
+        const blog_posts = document.getElementById('blog_posts_id');
+        blog_data.forEach(el => {
+            let post = document.createElement('div');
+            post.className = 'blog_post';
+            post.innerHTML = el.text;
+            blog_posts.appendChild(post);
+        });
+        const blog_posts_all = blog_posts.querySelectorAll('div');
+        const n = blog_posts_all.length;
+        blog_posts.style.setProperty('--total', Math.ceil(n/3));
+    };
+
+</script>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
